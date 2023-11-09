@@ -1,5 +1,9 @@
 FROM registry.fedoraproject.org/fedora-toolbox:38
 
+# Build tools
+RUN dnf install gcc-13.2.1 -y && dnf clean all
+
+# shell stuff
 RUN dnf install fish-3.6.1 neovim-0.9.2 fzf-0.43.0 -y && dnf clean all
 
 RUN echo 'flatpak-spawn --host podman "$@"' > "/usr/bin/podman" && chmod +x "/usr/bin/podman"
