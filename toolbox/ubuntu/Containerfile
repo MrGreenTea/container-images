@@ -1,6 +1,7 @@
 FROM quay.io/toolbx/ubuntu-toolbox:22.04
 
 # install software-properties-common
+# have to install this first for add-apt-repository to work
 RUN apt-get update \
     && apt-get --yes --install-recommends install software-properties-common \
     && apt-get clean && rm -rf /var/lib/apt/lists/*;
@@ -8,7 +9,7 @@ RUN apt-get update \
 # install fish shell
 RUN apt-add-repository ppa:fish-shell/release-3 \
     && apt-get update \
-    && apt-get --yes --install-recommends install fish=3.6.1-1~jammy \
+    && apt-get --yes --install-recommends install fish=3.6.1-1~jammy fzf \
     && apt-get clean && rm -rf /var/lib/apt/lists/*;
 
 # install neovim into /opt and symlink it to /usr/bin
