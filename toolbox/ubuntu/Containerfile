@@ -9,8 +9,11 @@ RUN apt-get update \
 # install fish shell
 RUN apt-add-repository ppa:fish-shell/release-3 \
     && apt-get update \
-    && apt-get --yes --install-recommends install fish=3.6.1-1~jammy fzf \
+    && apt-get --yes --install-recommends install fish=3.6.1-1~jammy \
     && apt-get clean && rm -rf /var/lib/apt/lists/*;
+RUN curl --location "https://github.com/junegunn/fzf/releases/download/0.43.0/fzf-0.43.0-linux_amd64.tar.gz" --output /tmp/fzf-0.43.0-linux_amd64.tar.gz \
+    && tar -xf /tmp/fzf-0.43.0-linux_amd64.tar.gz -C /usr/bin \
+    && rm /tmp/fzf-0.43.0-linux_amd64.tar.gz 
 
 # install neovim into /opt and symlink it to /usr/bin
 RUN curl --location "https://github.com/neovim/neovim/releases/download/v0.9.2/nvim-linux64.tar.gz" --output /tmp/nvim-linux64.tar.gz \
