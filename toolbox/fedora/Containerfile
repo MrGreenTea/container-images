@@ -1,4 +1,4 @@
-FROM registry.fedoraproject.org/fedora-toolbox:38
+FROM registry.fedoraproject.org/fedora-toolbox:39
 
 # Build tools
 RUN dnf install gcc-13.2.1 -y && dnf clean all
