@@ -7,6 +7,12 @@ RUN dnf install gcc -y && dnf clean all
 # shell stuff
 RUN dnf install fish neovim fzf jq gh -y && dnf clean all
 
+# newest python
+RUN dnf install python3 python3-dev && dnf clean all
+
+# install github cli
+RUN dnf install gh && dnf clean all
+
 # tools that should be run on host system are proxied
 RUN echo 'flatpak-spawn --host podman "$@"' > "/usr/bin/podman" && chmod +x "/usr/bin/podman"
-RUN echo 'flatpak-spawn --host notify-send "$@"' > "/usr/bin/notify-send" && chmod +x "/usr/bin/notify-send"
+RUN echo 'flatpak-spawn --host notify-send "$@' > "/usr/sbin/notify-send" && chmod +x "/usr/sbin/notify-send"
